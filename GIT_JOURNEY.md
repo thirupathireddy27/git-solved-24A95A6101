@@ -82,7 +82,53 @@ merge conflicts across multiple branches using proper Git workflows.
 
 ### Merge 2: main + conflict-simulator (6 files)
 
-[Document the second set of conflicts similarly]
+#### Conflict 1: config/app-config.yaml
+
+- **Issue**: The simulator branch added debug mode and custom logging level settings, while main kept minimal production configs
+- **Resolution**: Combined both by introducing DEBUG_MODE and LOG_LEVEL parameters with environment control
+- **Strategy**: Enabled debug options only in non-production environments
+-  **Difficulty**: Medium
+-**Time**: 15 minutes
+
+#### Conflict 2: config/database-config.json
+
+- **Issue**: Conflict-simulator used an in-memory SQLite database, while main used PostgreSQL
+- **Resolution**: Added both configurations and enabled database type selection via DB_TYPE variable
+- **Strategy**: Defaulted to PostgreSQL for production and SQLite for simulation/testing
+- **Difficulty**: Medium
+- **Time**: 10 minutes
+
+#### Conflict 3: scripts/deploy.sh
+
+- **Issue**: Conflict-simulator used simulated network deployment, main used real production deployment
+- **Resolution**: Merged logic by adding SIMULATE_DEPLOY flag to toggle between real and test modes
+- **Strategy**: Controlled via environment variable; production unaffected
+- **Difficulty**: Hard
+- **Time**: 20 minutes
+
+#### Conflict 4: scripts/monitor.js
+
+- **Issue**: Simulator added fake latency metrics and custom monitoring intervals
+- **Resolution**: Integrated simulation mode alongside real metrics collection
+- **Strategy**: Used a conditional check (IS_SIMULATION) to control data flow
+- **Difficulty**: Medium
+- **Time**: 15 minutes
+
+#### Conflict 5: docs/architecture.md
+
+- **Issue**: Simulator branch documented new simulated workflow diagrams conflicting with real architecture diagrams
+- **Resolution**: Added a new section “Simulation Flow Architecture” to document both clearly
+- **Strategy**: Maintained separation of simulation and production flows for clarity
+- **Difficulty**: Easy
+- **Time**: 10 minutes
+
+#### Conflict 6: README.md
+
+- **Issue**: Both branches updated setup instructions and feature lists differently
+- **Resolution**: Merged both sections and highlighted simulation-specific features separately
+- **Strategy**: Organized README with subsections for Production and Simulator environments
+- **Difficulty**: Easy
+- **Time**: 10 minutes
 
 ## Most Challenging Parts
 
