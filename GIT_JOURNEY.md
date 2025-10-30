@@ -88,7 +88,7 @@ merge conflicts across multiple branches using proper Git workflows.
 - **Resolution**: Combined both by introducing DEBUG_MODE and LOG_LEVEL parameters with environment control
 - **Strategy**: Enabled debug options only in non-production environments
 -  **Difficulty**: Medium
--**Time**: 15 minutes
+- **Time**: 15 minutes
 
 #### Conflict 2: config/database-config.json
 
